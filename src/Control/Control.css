@@ -1,0 +1,34 @@
+.Input{
+    display: block;
+}
+
+.Generate{
+    background-color: #3498db;
+    margin: 10px 0;
+}
+
+.Clear{
+    background-color: #e74c3c;
+    margin: 10px;
+}
+
+.ControlsContainer{
+    padding: 20px;
+}
+
+button{
+   border-radius: 5px;
+   border: none;
+   color: white;
+   padding: 10px;  
+   cursor: pointer;
+}
+
+button:focus{
+    outline: none;
+}
+
+.SelectedColor{
+    margin: auto;
+    text-align: center;
+}

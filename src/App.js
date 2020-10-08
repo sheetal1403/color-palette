@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useCallback } from 'react';
 import './App.css';
+import Palette from './Palette/Palette';
+import Control from './Control/Control';
 
 function App() {
+
+  const [colors, setcolors] = useState(0)
+  const [selectedColor, setSelectedColor] = useState();
+
+
+  const generateHandler = (value) => {
+    setcolors(value);
+  }
+
+  const clearHandler = () => {
+    setcolors(0);
+    setSelectedColor('');
+  }
+
+  const onClick = useCallback((red,green,blue) => {
+    //Convert to hex
+    const color = Number(red).toString(16) + Number(green).toString(16) + Number(blue).toString(16);
+    setSelectedColor(color)
+  },[])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Main">
+      <Palette colors={colors} onClick={onClick}/>
+      <Control generate={generateHandler} clear={clearHandler} color={selectedColor}/>
     </div>
   );
 }
