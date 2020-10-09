@@ -20,9 +20,14 @@ function App() {
 
   const onClick = useCallback((red,green,blue) => {
     //Convert to hex
-    const color = Number(red).toString(16) + Number(green).toString(16) + Number(blue).toString(16);
+    const color = convertToHex(red) + convertToHex(green) + convertToHex(blue);
     setSelectedColor(color)
   },[])
+
+  const convertToHex = (colorNumber) => {
+    var hex = Number(colorNumber).toString(16)
+    return hex.length === 1 ? '0'+hex : hex
+  }
   
 
   return (
